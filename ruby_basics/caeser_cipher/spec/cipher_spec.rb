@@ -16,5 +16,12 @@ RSpec.describe 'Caeser Cipher' do
     it 'shifts with spaces' do
       expect(cipher("a b c", 1)).to eq("b c d")
     end
+
+    it 'wraps a and z' do
+      expect(cipher("zzz", 2)).to eq("bbb")
+      expect(cipher("aaa", 27)).to eq("bbb")
+    end
+
+    
   end
 end
