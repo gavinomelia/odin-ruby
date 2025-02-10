@@ -13,7 +13,7 @@ RSpec.describe 'Caeser Cipher' do
       expect(cipher("abc", 5)).to eq("fgh")
     end
 
-    xit 'shifts with spaces' do
+    it 'shifts with spaces' do
       expect(cipher("a b c", 1)).to eq("b c d")
     end
   end
