@@ -22,6 +22,12 @@ RSpec.describe 'Caeser Cipher' do
       expect(cipher("aaa", 27)).to eq("bbb")
     end
 
-    
+    it 'works with periods' do
+      expect(cipher("abc.", 1)).to eq ("bcd.")
+    end
+
+    it 'works with commas' do
+      expect(cipher("a,bc", 1)).to eq ("b,cd")
+    end
   end
 end
