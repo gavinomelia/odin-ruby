@@ -29,5 +29,9 @@ RSpec.describe 'Caeser Cipher' do
     it 'works with commas' do
       expect(cipher("a,bc", 1)).to eq ("b,cd")
     end
+
+    it 'works with uppercase' do
+      expect(cipher("AbC", 1)).to eq ("BcD")
+    end
   end
 end
