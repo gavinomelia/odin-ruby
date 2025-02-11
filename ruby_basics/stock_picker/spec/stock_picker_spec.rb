@@ -13,8 +13,8 @@ RSpec.describe 'Stock Picker' do
       expect(stock_picker([17,3,6,9,15,8,6,1,10])).to eq([1,4])
     end
 
-    xit 'picks the best days' do
-      expect(stock_picker([17,3,6,9,15,8,6,1,10])).to eq([1,4])
+    it 'ensure edge cases are handled' do
+      expect(stock_picker([17,3,6,9,15,8,6,1])).to eq([1,4])
     end
   end
 end
