@@ -7,7 +7,7 @@ class Game
   end
 
   def start
-    play_turn until @board.winner?
+    play_turn until @board.winner? || @board.draw?
     end_game
   end
 
@@ -24,7 +24,11 @@ class Game
   def end_game
     @board.display
     switch_player # switch back to the winning player
-    puts "Player #{@current_player} wins"
+    if @board.winner?
+      puts "Player #{@current_player} wins"
+    else
+      puts 'The game is a draw! Bummer. That is what you get for playing a lame game. Maybe you should try chess instead.'
+    end
   end
 
   private

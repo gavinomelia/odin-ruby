@@ -16,6 +16,10 @@ class Board
     board[row][col] != ' '
   end
 
+  def draw?
+    board.flatten.none?(' ')
+  end
+
   def winner?
     check_rows || check_columns || check_diagonals || false
   end
