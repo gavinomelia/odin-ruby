@@ -1,4 +1,4 @@
-class Game
+class Board
   def initialize
     @board = Array.new(3) { Array.new(3, ' ') }
   end
@@ -6,11 +6,25 @@ class Game
   attr_reader :board
 
   def play(row, col, player)
+    return false if taken?(row, col)
+
     @board[row][col] = player
+    true
+  end
+
+  def taken?(row, col)
+    board[row][col] != ' '
   end
 
   def winner?
     check_rows || check_columns || check_diagonals || false
+  end
+
+  def display
+    puts '  0 1 2'
+    board.each_with_index do |row, i|
+      puts "#{i} #{row.join('|')}"
+    end
   end
 
   private
