@@ -35,21 +35,21 @@ RSpec.describe Board do
       board.play(0, 0, 'X')
       board.play(0, 1, 'X')
       board.play(0, 2, 'X')
-      expect(board.winner?).to eq({ winner: 'X' })
+      expect(board.winner?).to eq(true)
     end
 
     it 'detects a vertical win' do
       board.play(0, 0, 'O')
       board.play(1, 0, 'O')
       board.play(2, 0, 'O')
-      expect(board.winner?).to eq({ winner: 'O' })
+      expect(board.winner?).to eq(true)
     end
 
     it 'detects a diagonal win' do
       board.play(0, 0, 'X')
       board.play(1, 1, 'X')
       board.play(2, 2, 'X')
-      expect(board.winner?).to eq({ winner: 'X' })
+      expect(board.winner?).to eq(true)
     end
   end
 

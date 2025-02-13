@@ -17,7 +17,7 @@ class Board
   end
 
   def draw?
-    board.flatten.none?(' ')
+    board.flatten.none? { |cell| cell == ' ' }
   end
 
   def winner?
@@ -33,28 +33,21 @@ class Board
 
   private
 
+  def all_same?(arr)
+    arr.uniq.size == 1 && arr.first != ' '
+  end
+
   def check_rows
-    board.each do |row|
-      return { winner: 'X' } if row.all?('X')
-      return { winner: 'O' } if row.all?('O')
-    end
-    nil
+    board.any? { |row| all_same?(row) }
   end
 
   def check_columns
-    (0..2).each do |col|
-      return { winner: 'X' } if board.all? { |row| row[col] == 'X' }
-      return { winner: 'O' } if board.all? { |row| row[col] == 'O' }
-    end
-    nil
+    (0..2).any? { |col| all_same?(board.map { |row| row[col] }) }
   end
 
   def check_diagonals
-    return { winner: 'X' } if (0..2).all? { |i| board[i][i] == 'X' }
-    return { winner: 'O' } if (0..2).all? { |i| board[i][i] == 'O' }
-    return { winner: 'X' } if (0..2).all? { |i| board[i][2 - i] == 'X' }
-    return { winner: 'O' } if (0..2).all? { |i| board[i][2 - i] == 'O' }
-
-    nil
+    left_to_right = (0..2).map { |i| board[i][i] }
+    right_to_left = (0..2).map { |i| board[i][2 - i] }
+    all_same?(left_to_right) || all_same?(right_to_left)
   end
 end
